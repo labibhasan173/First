@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <title>Calculator</title>
+
+</head>
+<body>
+    <div class="calculator">
+  <form>
+    <input type="text" id="result" readonly>
+    <table class="buttons">
+      <tr>
+        <td><button>7</button></td>
+        <td><button>8</button></td>
+        <td><button>9</button></td>
+        <td><button>+</button></td>
+      </tr>
+      <div class="calculator">
+        <form>
+          <input type="text" id="result" readonly>
+          <table class="buttons">
+            <tr>
+              <td><button>4</button></td>
+              <td><button>5</button></td>
+              <td><button>6</button></td>
+              <td><button>-</button></td>
+            </tr>
+            <div class="calculator">
+                <form>
+                  <input type="text" id="result" readonly>
+                  <table class="buttons">
+                    <tr>
+                      <td><button>1</button></td>
+                      <td><button>2</button></td>
+                      <td><button>3</button></td>
+                      <td><button>=</button></td>
+                    </tr>
+                    
+                  </table>
+                </form>
+              </div>
+            </table>
+        </form>
+      </div>
+    </table>
+</form>
+</div>
+
+    <style>
+        .calculator {
+  width: 200px;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+#result {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.buttons {
+  width: 100%;
+  text-align: center;
+}
+
+button {
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  font-size: 18px;
+  border: none;
+  background-color: #ccc;
+}
+
+    </style>
+<script>
+    const result = document.getElementById('result');
+const buttons = Array.from(document.querySelectorAll('.buttons button'));
+
+buttons.forEach(button => {
+  button.addEventListener('click', calculate);
+});
+
+function calculate() {
+  const clickedButtonValue = this.textContent;
+  const currentValue = result.value;
+
+  if (clickedButtonValue === '=') {
+    if (currentValue !== '') {
+      result.value = eval(currentValue);
+    }
+  } else if (clickedButtonValue === 'C') {
+    result.value = '';
+  } else {
+    result.value += clickedButtonValue;
+  }
+}
+
+</script>
+</body>
+</html>
